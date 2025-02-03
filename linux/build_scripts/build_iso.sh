@@ -157,4 +157,10 @@ echo "Building ISO..."
 mkdir -p "${WORK_DIR}/out"
 mkarchiso -v -w "${WORK_DIR}/work" -o "${WORK_DIR}/out" "${PROFILE_DIR}"
 
-echo "ISO build complete! Output available at: ${WORK_DIR}/out/${ISO_NAME}"
+# Copy ISO to output directory
+echo "Copying ISO to output directory..."
+mkdir -p /output
+cp "${WORK_DIR}/out/${ISO_NAME}" /output/
+chmod 644 "/output/${ISO_NAME}"
+
+echo "ISO build complete! Output available at: /output/${ISO_NAME}"

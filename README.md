@@ -1,7 +1,14 @@
 # NexusOS - AI-Powered Operating System
 
 ## Overview
-NexusOS is a revolutionary AI-powered operating system that combines advanced artificial intelligence with traditional OS capabilities. Built on top of Linux, it features NexusAI - an intelligent system core that can generate and execute commands dynamically.
+NexusOS is a revolutionary AI-powered operating system that combines advanced artificial intelligence with traditional OS capabilities. Built on top of Arch Linux, it features NexusAI - an intelligent system core that can generate and execute commands dynamically.
+
+## Version
+Current Version: 0.1.0 (2025-02-03)
+- First bootable ISO release
+- Complete AI integration with Ollama
+- Full desktop environment support
+- Voice command capabilities
 
 ## Key Features
 - 🤖 NexusAI Core - AI-powered system management and automation
@@ -11,45 +18,37 @@ NexusOS is a revolutionary AI-powered operating system that combines advanced ar
 - 📊 Real-time system monitoring and optimization
 - 🔐 AI-powered security and system management
 
-## Components
-1. NexusAI Core - The AI-powered system daemon
-2. NexusAI Terminal - Futuristic GUI terminal interface
-3. NexusAI Shell - AI-enhanced command-line interface
-4. System Monitor - Real-time system statistics and optimization
+## System Requirements
+- x86_64 architecture
+- 4GB RAM minimum (8GB recommended)
+- 20GB disk space
+- UEFI or BIOS boot support
+- Internet connection for AI features
 
-## Linux Distribution
+## Quick Start
 
-NexusOS is now available as a complete Linux distribution! The distribution is based on Arch Linux and includes:
+### Option 1: Download ISO
+1. Download the latest ISO from our releases page
+2. Create a bootable USB or DVD
+3. Boot from the installation media
+4. Login with default credentials:
+   - Username: nexusos
+   - Password: nexusos
 
-- Pre-configured AI shell environment
-- Ollama AI service
-- Optimized system settings
-- Beautiful desktop environment
-- Voice command support out of the box
-
-### Building the ISO
-
+### Option 2: Build from Source
 Requirements:
 - Docker
 - bash
 - git
-- At least 10GB of free disk space
-- 4GB+ RAM recommended
+- 10GB+ free disk space
+- 4GB+ RAM
 
-Steps:
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/NexusOS.git
+# Clone the repository
+git clone https://github.com/LoSkroefie/NexusOS.git
 cd NexusOS
-```
 
-2. Build the ISO using Docker:
-```bash
-# Make the build script executable
-chmod +x linux/build_scripts/build_iso.sh
-
-# Run the build script in Docker
+# Build using Docker
 docker run --rm -it \
   --privileged \
   -v "$(pwd):/nexusos" \
@@ -60,104 +59,54 @@ docker run --rm -it \
 
 The ISO will be created in the `output` directory.
 
-### Testing the ISO
-
-You can test the ISO using VirtualBox or QEMU:
-
-#### Using VirtualBox
-1. Create a new Virtual Machine
-2. Select "Other Linux (64-bit)" as the type
-3. Allocate at least 4GB RAM
-4. Create a virtual hard disk (20GB+ recommended)
-5. Mount the ISO and boot
-6. Login with:
-   - Username: nexusos
-   - Password: nexusos
-
-#### Using QEMU
-```bash
-qemu-system-x86_64 \
-  -m 4G \
-  -enable-kvm \
-  -cdrom output/NexusOS-*.iso \
-  -boot d
-```
-
-### Default Credentials
-- Username: nexusos
-- Password: nexusos
-- Root password: nexusos
-
-### Features Available After Installation
-- NexusAI Terminal (press Ctrl+Alt+T)
-- Voice Commands (click microphone icon or press Ctrl+Shift+V)
-- System Monitor (click system tray icon)
-- Ollama AI Service (pre-configured and running)
-
-### Troubleshooting
-
-If you encounter any issues:
-
-1. Check system requirements
-2. Verify SHA256 checksum of the ISO
-3. Enable virtualization in BIOS if using VirtualBox/QEMU
-4. Check logs in `/var/log/nexusos.log`
-
-For more detailed troubleshooting, see our [Wiki](https://github.com/yourusername/NexusOS/wiki).
-
-## Installation
-```bash
-# Coming soon
-```
-
-## Development Status
-- ✅ Core AI System (In Progress)
-- ✅ GUI Terminal (In Development)
-- ⏳ System Integration (Planned)
-- ⏳ Full OS Integration (Planned)
-
-## Requirements
-- Python 3.9+
-- Ollama (Local AI model)
-- PyQt6
-- Linux-based system
+## Components
+1. NexusAI Core - The AI-powered system daemon
+2. NexusAI Terminal - Futuristic GUI terminal interface
+3. NexusAI Shell - AI-enhanced command-line interface
+4. System Monitor - Real-time system statistics and optimization
 
 ## Development
 
-### Requirements
+### Repository Structure
+```
+nexusos/
+├── src/                    # Source code
+│   ├── nexus_core/        # AI and system core
+│   └── nexus_terminal/    # GUI terminal
+├── linux/                  # Build scripts and configs
+├── docs/                   # Documentation
+└── tests/                 # Test suites
+```
 
-- Python 3.8+
-- PyQt6
-- Ollama AI
-- Additional requirements in `requirements.txt`
-
-### Setup Development Environment
-
-1. Install dependencies:
+### Building and Testing
 ```bash
+# Install development dependencies
 pip install -r requirements.txt
-```
 
-2. Install Ollama:
-```bash
-# Linux
-curl -L https://ollama.ai/download/ollama-linux-amd64 -o ollama
-chmod +x ollama
-sudo mv ollama /usr/local/bin/
+# Run tests
+python -m pytest tests/
 
-# Start Ollama service
-ollama serve
-```
-
-3. Run NexusOS:
-```bash
-python src/main.py
+# Build documentation
+cd docs && make html
 ```
 
 ## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+1. Fork the repository on GitHub
+2. Create your feature branch
+3. Commit your changes
+4. Push to your branch
+5. Create a Pull Request
 
 ## License
-
 NexusOS is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Support
+- [Issue Tracker](https://github.com/LoSkroefie/NexusOS/issues)
+- [Documentation](https://github.com/LoSkroefie/NexusOS/wiki)
+- [Wiki](https://github.com/LoSkroefie/NexusOS/wiki)
+
+## Acknowledgments
+- Built on Arch Linux
+- Uses Ollama for AI capabilities
+- OpenBox for desktop environment
+- PyQt6 for GUI components

@@ -1,0 +1,17 @@
+[Unit]
+Description=NexusOS AI Shell
+After=ollama.service
+Requires=ollama.service
+Wants=graphical.target
+
+[Service]
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/nexusos/.Xauthority
+ExecStart=/usr/bin/python /opt/nexusos/src/main.py
+WorkingDirectory=/opt/nexusos
+Restart=always
+User=nexusos
+Group=nexusos
+
+[Install]
+WantedBy=graphical.target
